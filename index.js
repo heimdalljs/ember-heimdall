@@ -1,6 +1,7 @@
 /* jshint node: true */
 'use strict';
 
+const calculateCacheKeyForTree = require('calculate-cache-key-for-tree');
 const Funnel = require('broccoli-funnel');
 const chalk  = require('chalk');
 
@@ -67,6 +68,10 @@ module.exports = {
 
       this.import('vendor/heimdalljs/heimdalljs.iife.js', { prepend: true });
     }
+  },
+
+  cacheKeyForTree(treeType) {
+    return calculateCacheKeyForTree(treeType, this);
   },
 
   treeForVendor: function() {
