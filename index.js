@@ -71,7 +71,7 @@ module.exports = {
 
   treeForVendor: function() {
     if (this.isInstrumented()) {
-      var heimdallTree = new Funnel('node_modules/heimdalljs/dist', {
+      const heimdallTree = new Funnel('node_modules/heimdalljs/dist', {
         destDir: 'heimdalljs'
       });
 
