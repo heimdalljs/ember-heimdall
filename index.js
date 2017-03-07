@@ -57,9 +57,10 @@ module.exports = {
   },
 
   includedCommands: function() {
-    patchCommand(serveCommand, { name: 'instrument', type: Boolean, default: false });
-    patchCommand(buildCommand, { name: 'instrument', type: Boolean, default: false });
-    patchCommand(testCommand, { name: 'instrument', type: Boolean, default: false });
+    let instrumentOption = { name: 'instrument', type: Boolean, default: false };
+    patchCommand(serveCommand, instrumentOption);
+    patchCommand(buildCommand, instrumentOption);
+    patchCommand(testCommand, instrumentOption);
   },
 
   included: function() {
