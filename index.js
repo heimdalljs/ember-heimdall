@@ -30,18 +30,10 @@ module.exports = {
       return this._isInstrumented;
     }
 
-    let INSTRUMENT_HEIMDALL = false;
-    let args = process.argv;
-
-    for (let i = 0; i < args.length; i++) {
-      if (args[i] === '--instrument') {
-        INSTRUMENT_HEIMDALL = true;
-        break;
-      }
-    }
+    let INSTRUMENT_HEIMDALL = process.argv.indexOf('--instrument') !== -1;
 
     if (INSTRUMENT_HEIMDALL) {
-      this.ui.writeln(chalk.yellow(
+      this.ui.writeLine(chalk.yellow(
           'Heimdall.js will be included in your build output and instrumentation will not be stripped.'
         ));
     }
