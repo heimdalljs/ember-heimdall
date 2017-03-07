@@ -11,8 +11,21 @@ const serveCommand = require('ember-cli/lib/commands/serve');
 const buildCommand = require('ember-cli/lib/commands/build');
 const testCommand = require('ember-cli/lib/commands/test');
 
+function hasOption(options, name) {
+  for (let i = 0, l = options.length; i < l; i++) {
+    if (options[i].name === name) {
+      return true;
+    }
+  }
+  return false;
+}
+
 function patchCommand(command, newOption) {
-  command.prototype.availableOptions.push(newOption);
+  const options = command.prototype.availableOptions;
+
+  if (!hasOption(options, newOption.name)) {
+    options.push(newOption);
+  }
 }
 
 function assert(msg, test) {
